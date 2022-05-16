@@ -1,0 +1,22 @@
+button {
+  min-width: 50px;
+}
+.trnas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.fit-content {
+  width: fit-content;
+}
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.ceter {
+  text-align: center !important;
+}

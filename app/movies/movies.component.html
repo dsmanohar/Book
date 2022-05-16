@@ -1,0 +1,3 @@
+<div class="w-75  ms-auto me-auto p-2 d-flex flex-wrap">
+    <app-moviecard (click)="changeRoute(ind)" *ngFor="let movie of helper.movies; let ind=index;" [inputVal]="movie"  class="ms-4"></app-moviecard>
+</div>

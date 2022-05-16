@@ -1,0 +1,21 @@
+header {
+  background-color: rgb(51, 53, 69);
+}
+input:focus {
+  outline: none;
+}
+input {
+  font-size: 0.8rem !important;
+}
+img {
+  width: 8rem;
+  height: 2.5rem;
+}
+ul {
+  li:hover {
+    background-color: aqua;
+  }
+  li {
+    cursor: pointer;
+  }
+}

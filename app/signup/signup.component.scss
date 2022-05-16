@@ -1,0 +1,15 @@
+.fit-content {
+  width: fit-content;
+}
+.mr-top {
+  margin-top: 100px !important;
+}
+input {
+  margin: 5px !important;
+  width: 20rem !important;
+}
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

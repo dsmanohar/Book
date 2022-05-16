@@ -1,0 +1,22 @@
+<div [ngClass]="state? 'd-block': 'd-none'" class="trnas">
+    <div class=" text-white  ms-auto me-auto mt-5  bg-white border rounded p-3 w-25 ceter">
+        <h5 class="text-dark "> <b> {{movieName}}</b> </h5>
+        <p class="text-dark ms-auto me-auto mt-3">Ticket Limit 6</p>
+        <p class="text-dark ms-auto me-auto mt-3">There are only {{curTickets}} tickets</p>
+        <input type="number" class="p-1 mt-3 w-75" [(ngModel)]="numTickets" placeholder="enter the number of tickets u want"> <br>
+        <p class="text-dark mt-3" *ngIf="numTickets"> <b>Total Price is {{numTickets *150}}</b> </p>
+        <button class="btn btn-danger mt-3" (click)="state = !state"> close</button> 
+        <button class="btn btn-success mt-3 ms-2" (click)="buyTicket()">Book</button>
+    </div>
+</div>
+<div class="w-75  ms-auto me-auto mt-5 p-2 ">
+    <h1><b>{{movieName}}</b></h1>
+    <div *ngFor="let theater of theaters" class="mt-5">
+        <div class="d-flex w-50 align-items-center">
+            <p > <b> {{theater.name}} </b></p>
+            <button class="btn btn-outline-success p-1 ms-3"  (click)="bookTicket(1,theater.id)" >9:00</button>
+            <button class="btn btn-outline-success p-1 ms-3" (click)="bookTicket(2,theater.id)">10:00</button>
+            <button class="btn btn-outline-success p-1 ms-3" (click)="bookTicket(3,theater.id)">11:00</button>
+        </div>
+    </div>    
+</div>

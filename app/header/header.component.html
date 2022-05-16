@@ -1,0 +1,18 @@
+<header class="d-flex justify-content-center">
+    <div class="w-75 p-2 ps-4 pe-4 d-flex align-items-center">
+        <a href="" routerLink="/" class="text-white text-decoration-none"> <b> Book My Show</b></a> 
+        <div class="ms-auto me-2 btn-group">
+            <button type="button" class="btn btn-danger dropdown-toggle p-1" data-bs-toggle="dropdown" aria-expanded="false">
+              Filter
+            </button>
+            <ul class="dropdown-menu">
+              <li class="p-2" (click)="sendFilter('All')">All</li>
+              <li class="p-2" (click)="sendFilter('Telugu')">Telugu</li>
+              <li class="p-2" (click)="sendFilter('English')">English</li>
+              <li class="p-2" (click)="sendFilter('Hindi')">Hindi</li>
+            </ul>
+        </div>
+        <button  class="btn btn-danger p-1" (click)="changeRoute()" *ngIf="helper.userLogged === null">Login</button>
+        <button  class="btn btn-danger p-1" (click)="logout()" *ngIf="helper.userLogged !== null">Logout</button>
+    </div> 
+</header>
