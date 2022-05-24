@@ -34,6 +34,13 @@ namespace BookMyShow.Models
         {
             modelBuilder.Entity<Movie>(entity =>
             {
+                entity.Property(e => e.Imagepath)
+                    .HasMaxLength(255)
+                    .IsUnicode(false)
+                    .HasColumnName("imagepath");
+
+                entity.Property(e => e.Isdeleted).HasColumnName("isdeleted");
+
                 entity.Property(e => e.Language)
                     .HasMaxLength(30)
                     .IsUnicode(false);
@@ -50,6 +57,8 @@ namespace BookMyShow.Models
                 entity.HasNoKey();
 
                 entity.ToTable("shows");
+
+                entity.Property(e => e.Isdeleted).HasColumnName("isdeleted");
 
                 entity.Property(e => e.MovieId).HasColumnName("movieID");
 
@@ -74,6 +83,8 @@ namespace BookMyShow.Models
 
             modelBuilder.Entity<Theater>(entity =>
             {
+                entity.Property(e => e.Isdeleted).HasColumnName("isdeleted");
+
                 entity.Property(e => e.Location)
                     .HasMaxLength(255)
                     .IsUnicode(false)
@@ -93,6 +104,8 @@ namespace BookMyShow.Models
                 entity.Property(e => e.Email)
                     .HasMaxLength(255)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Isdeleted).HasColumnName("isdeleted");
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(255)

@@ -1,4 +1,5 @@
-﻿using BookMyShow.Models;
+﻿using BookMyShow.core.Models;
+using BookMyShow.Models;
 using BookMyShow.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,32 +14,39 @@ namespace BookMyShow.Controllers
     {
         private readonly BookMyShowContext _context;
         private readonly IMovies _movies;
-        private readonly IDatabase db = DatabaseConfiguration.Build()
-                     .UsingConnectionString("Data Source=.\\sqlexpress;Initial Catalog=BookMyShow;Integrated Security=True")
-                     .UsingProvider<SqlSererMsDataDatabaseProvider>()
-                     .UsingDefaultMapper<ConventionMapper>(m =>
-                     {
-                         m.InflectTableName = (inflector, s) => inflector.Pluralise(inflector.Underscore(s));
-                         m.InflectColumnName = (inflector, s) => inflector.Underscore(s);
-                     })
-                     .Create();
         public MoviesController(BookMyShowContext context,IMovies movies)
         {
             _context = context;
             _movies = movies;
         }
+
         [HttpGet]
         public IActionResult GetMovies()
         {
             var res = _movies.GetMovies();
             return Ok(res);
         }
+
         [HttpGet("{id}")]
         public IActionResult GetMovie(int id)
         {
             var res = _movies.GetMovie(id);
             return Ok(res); 
 
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteMovie(int id)
+        {
+            _movies.DeleteMovie(id);
+            return Ok(null);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<MovieDTO>> PostUser(Movie movie)
+        {
+            var res = await _movies.PostUser(movie);
+            return res;
         }
     }
 }

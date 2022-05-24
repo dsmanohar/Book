@@ -1,0 +1,13 @@
+<div class="w-75  ms-auto me-auto p-2">
+    <h1 class="text-align mt-4">Admin Panel</h1>
+    <div class="w-100 d-flex justify-content-center mt-5">
+        <button class="btn btn-outline-primary p-2 m-1" (click)="clickFunc(1)">Add Movie</button>
+        <button class="btn btn-outline-danger p-2 m-1" (click)="clickFunc(2)">Delete Movie</button>
+        <button class="btn btn-outline-primary p-2 m-1" (click)="clickFunc(3)">Add Theater</button>
+        <button class="btn btn-outline-danger p-2 m-1" (click)="clickFunc(4)">Delete Theater</button>
+    </div>
+    <app-add-movie *ngIf="insertMovie"></app-add-movie>
+    <app-deletemovie *ngIf="deleteMovie"></app-deletemovie>
+    <app-delete-theater *ngIf="deleteTheater"></app-delete-theater>
+    <app-theater *ngIf="insertTheater"></app-theater>
+</div>

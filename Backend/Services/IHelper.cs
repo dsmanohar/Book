@@ -1,4 +1,5 @@
-﻿using BookMyShow.Models;
+﻿using BookMyShow.core.Models;
+using BookMyShow.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookMyShow.Services

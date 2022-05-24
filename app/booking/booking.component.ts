@@ -11,7 +11,7 @@ export class BookingComponent implements OnInit {
   theaters: { id: number; name: string }[] = []
   state: boolean = false
   curTickets: number = 0
-  movieName: string = ''
+  movieName: string = this.helper.selectedMovie;
   constructor(
     public helper: Helper,
     private router: Router,

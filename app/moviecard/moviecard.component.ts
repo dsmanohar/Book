@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core'
   styleUrls: ['./moviecard.component.scss'],
 })
 export class MoviecardComponent implements OnInit {
-  @Input() inputVal!: { path: string; name: string; id: number }
+  @Input() inputVal!: { imagePath: string; name: string; id: number }
   constructor() {}
 
   ngOnInit(): void {}

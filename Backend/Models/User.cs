@@ -11,5 +11,6 @@ namespace BookMyShow.Models
         public string? Phoneno { get; set; }
         public string? Password { get; set; }
         public DateTime? CreatedOn { get; set; }
+        public bool? Isdeleted { get; set; }
     }
 }

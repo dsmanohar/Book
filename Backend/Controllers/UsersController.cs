@@ -11,6 +11,8 @@ using BookMyShow.Models;
 using PetaPoco.Providers;
 using BookMyShow.Services;
 using AutoMapper;
+using BookMyShow.core.Models;
+
 namespace BookMyShow.Controllers
 {
     [Route("api/[controller]/[action]")]

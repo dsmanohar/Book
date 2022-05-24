@@ -21,20 +21,15 @@ export class MoviesComponent implements OnInit {
       .get('https://localhost:7230/api/Movies/GetMovies')
       .subscribe((data: any) => {
         for (var movie of data) {
-          console.log(movie)
-          if (movie.id == 1) movie['path'] = '../../assets/images/avengers.jpg'
-          if (movie.id == 2) movie['path'] = '../../assets/images/avatar.jpg'
-          if (movie.id == 4) movie['path'] = '../../assets/images/dhangal.jpg'
-          if (movie.id == 5) movie['path'] = '../../assets/images/uri.jpg'
-          if (movie.id == 6) movie['path'] = '../../assets/images/BN.jpg'
-          if (movie.id == 7) movie['path'] = '../../assets/images/RRR.jpg'
           this.movieArray.push(movie)
         }
         this.helper.movies = this.movieArray
         this.helper.originalMovies = this.movieArray
       })
   }
-  changeRoute(index: number) {
+  changeRoute(index: number) { 
+    this.helper.moviePath = this.helper.movies[index].imagePath
+    this.helper.selectedMovie = this.helper.movies[index].name
     this.router.navigate([this.helper.movies[index].id])
   }
 }

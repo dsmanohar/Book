@@ -1,4 +1,4 @@
-﻿namespace BookMyShow.Models
+﻿namespace BookMyShow.core.Models
 {
     public class UserDTO
     {

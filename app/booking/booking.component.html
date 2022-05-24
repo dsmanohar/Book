@@ -9,10 +9,11 @@
         <button class="btn btn-success mt-3 ms-2" (click)="buyTicket()">Book</button>
     </div>
 </div>
-<div class="w-75  ms-auto me-auto mt-5 p-2 ">
-    <h1><b>{{movieName}}</b></h1>
-    <div *ngFor="let theater of theaters" class="mt-5">
-        <div class="d-flex w-50 align-items-center">
+<div class="fit-content ms-auto me-auto mt-5 p-2 text-aling">
+    <img [src]="helper.moviePath" alt="">
+    <h1 ><b>{{movieName}}</b></h1>
+    <div *ngFor="let theater of theaters" class="mt-4">
+        <div class="d-flex w-100 align-items-center justify-content-center">
             <p > <b> {{theater.name}} </b></p>
             <button class="btn btn-outline-success p-1 ms-3"  (click)="bookTicket(1,theater.id)" >9:00</button>
             <button class="btn btn-outline-success p-1 ms-3" (click)="bookTicket(2,theater.id)">10:00</button>

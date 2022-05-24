@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BookMyShow.core.Models;
 using BookMyShow.Models;
 
 namespace BookMyShow.Profiles

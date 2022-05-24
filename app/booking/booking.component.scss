@@ -12,6 +12,9 @@ button {
 .fit-content {
   width: fit-content;
 }
+.text-aling{
+  text-align:  center !important;
+}
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -19,4 +22,11 @@ input[type='number']::-webkit-outer-spin-button {
 }
 .ceter {
   text-align: center !important;
+}
+
+img {
+  width: 350px;
+  height: 400px;
+  outline: none;
+  border: none;
 }

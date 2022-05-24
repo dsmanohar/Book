@@ -3,30 +3,28 @@ using Microsoft.AspNetCore.Mvc;
 using PetaPoco;
 using PetaPoco.Providers;
 using AutoMapper;
+using BookMyShow.core.Models;
+using BookMyShow.Services.DataBaseService;
+using Microsoft.Data.SqlClient;
+
 namespace BookMyShow.Services
 {
     public class Movies: IMovies
     {
         private readonly IDatabase db;
         private readonly AutoMapper.IMapper _mapper;
-        public Movies(AutoMapper.IMapper mapper)
+        private readonly BookMyShowContext _context;
+        public Movies(AutoMapper.IMapper mapper, BookMyShowContext context)
         {
             _mapper = mapper;
-            db = DatabaseConfiguration.Build()
-                     .UsingConnectionString("Data Source=.\\sqlexpress;Initial Catalog=BookMyShow;Integrated Security=True")
-                     .UsingProvider<SqlSererMsDataDatabaseProvider>()
-                     .UsingDefaultMapper<ConventionMapper>(m =>
-                     {
-                         m.InflectTableName = (inflector, s) => inflector.Pluralise(inflector.Underscore(s));
-                         m.InflectColumnName = (inflector, s) => inflector.Underscore(s);
-                     })
-                     .Create();
+            _context = context;
+            db = new DataBaseService.Database().getDb();
         }
         public  List<MovieDTO> GetMovies()
         {
             
             List<MovieDTO> result = new List<MovieDTO>();
-            foreach (var a in db.Query<Movie>("SELECT * FROM Movies"))
+            foreach (var a in db.Query<Movie>("SELECT * FROM Movies where isdeleted=0"))
             {
                 result.Add(_mapper.Map<MovieDTO>(a));
             }
@@ -34,9 +32,22 @@ namespace BookMyShow.Services
         }
         public List<String> GetMovie(int id)
         {
-            List<string> obj = new List<string>();
-            obj.Add(db.SingleOrDefault<string>("select name from Movies where id=@0", id));
-            return obj;
+            db.EnableAutoSelect = false;
+            var a = db.Fetch<string>(@"EXEC getmovie 
+                                @@id = @0", id);
+            return a;
+        }
+        public void DeleteMovie(int id)
+        {
+            db.Update<Movie>("SET isdeleted = 1  WHERE id = @0", id);
+            return;
+
+        }
+        public async Task<ActionResult<MovieDTO>> PostUser(Movie movie)
+        {
+            _context.Movies.Add(movie);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<MovieDTO>(movie);
         }
     }
 }

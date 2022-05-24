@@ -9,6 +9,7 @@ namespace BookMyShow.Models
         public int Tickets { get; set; }
         public int MovieId { get; set; }
         public int TheaterId { get; set; }
+        public bool? Isdeleted { get; set; }
 
         public virtual Movie Movie { get; set; } = null!;
         public virtual Theater Theater { get; set; } = null!;

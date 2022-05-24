@@ -12,12 +12,17 @@ import { SignupComponent } from './signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { Helper } from './helpers.Service';
+import { AdminComponent } from './admin/admin.component';
+import { AddMovieComponent } from './admin/add-movie/add-movie.component';
+import { DeletemovieComponent } from './admin/deletemovie/deletemovie.component';
+import { TheaterComponent } from './admin/theater/theater.component';
+import { DeleteTheaterComponent } from './admin/delete-theater/delete-theater.component';
 
 const appRoutes: Routes = [
   { path: '', component: MoviesComponent },
   { path: 'signup', component: SignupComponent},
   { path: 'login', component: LoginComponent },
-  
+  { path: 'admin', component: AdminComponent },
   { path: ':id', component: BookingComponent }
 
 ]
@@ -30,6 +35,11 @@ const appRoutes: Routes = [
     BookingComponent,
     LoginComponent,
     SignupComponent,
+    AdminComponent,
+    AddMovieComponent,
+    DeletemovieComponent,
+    TheaterComponent,
+    DeleteTheaterComponent,
   ],
   imports: [
     BrowserModule,

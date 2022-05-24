@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router'
 import { Helper } from '../helpers.Service'
-import { Validators } from '@angular/forms'
 class validation {
   emailValidate(param: string) {
     let regExp = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9-]+[.][a-zA-Z]+[.a-zA-Z]*$/
@@ -27,7 +26,7 @@ export class LoginComponent implements OnInit {
   public pwd: string = ''
   ngOnInit(): void {}
   login() {
-    let data = { email: this.email, password: this.pwd }
+    let data = { email: "dsmanohar222@gmail.com", password: "ds123456@+" }
     this.http
       .post('https://localhost:7230/api/Users/CheckUser', data)
       .subscribe((data) => {

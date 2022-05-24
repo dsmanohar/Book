@@ -10,19 +10,11 @@ namespace BookMyShow.Services
         private readonly IDatabase db;
         public Tickets()
         {
-              db = DatabaseConfiguration.Build()
-                     .UsingConnectionString("Data Source=.\\sqlexpress;Initial Catalog=BookMyShow;Integrated Security=True")
-                     .UsingProvider<SqlSererMsDataDatabaseProvider>()
-                     .UsingDefaultMapper<ConventionMapper>(m =>
-                     {
-                         m.InflectTableName = (inflector, s) => inflector.Pluralise(inflector.Underscore(s));
-                         m.InflectColumnName = (inflector, s) => inflector.Underscore(s);
-                     })
-                     .Create();
+            db = new DataBaseService.Database().getDb();
         }
         public IEnumerable<int> GetTickets(int movieId, int TheaterId, int ShowId)
         {
-            var a = db.Query<int>("select tickets from shows where theaterID = @0 and movieID=@1 and showID =@2", TheaterId, movieId, ShowId);
+            var a = db.Query<int>("select tickets from shows where theaterID = @0 and movieID=@1 and showID =@2 and isdeleted=0", TheaterId, movieId, ShowId);
             return a;
         }
         public ActionResult BookTicket(int movieId, int TheaterId, int showId, int tickets)
