@@ -30,14 +30,12 @@ namespace BookMyShow.Controllers
 
          }
 
-        // GET: api/Users
         [HttpGet]
         public ActionResult<List<UserDTO>> GetUsers()
         {
            return Ok(_helper.GetUsers());
         }
 
-        // GET: api/Users/5
         [HttpGet("{id}")]
         public ActionResult<User> GetUser(int id)
         {
@@ -45,11 +43,6 @@ namespace BookMyShow.Controllers
             
         }
 
-        // PUT: api/Users/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-
-        // POST: api/Users
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<UserDTO>> PostUser(UserDTO userdto)
         {
@@ -64,7 +57,6 @@ namespace BookMyShow.Controllers
            return Ok(_helper.CheckUser(login)); 
         }
 
-        // DELETE: api/Users/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {

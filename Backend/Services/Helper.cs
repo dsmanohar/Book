@@ -19,6 +19,10 @@ namespace BookMyShow.Services
             db = new DataBaseService.Database().getDb();
         }
 
+        /// <summary>
+        /// get all the users 
+        /// </summary>
+        /// <returns>List of users</returns>
         public  List<UserDTO> GetUsers()
         {
             List<UserDTO> users = new List<UserDTO>();  
@@ -30,11 +34,21 @@ namespace BookMyShow.Services
             return users;
         }
 
+        /// <summary>
+        /// get information about specific user
+        /// </summary>
+        /// <param name="id">user id</param>
+        /// <returns>UserDto</returns>
         public UserDTO GetUser(int id)
         {
             return _mapper.Map<UserDTO>(_context.Users.Find(id));
         }
 
+        /// <summary>
+        /// add user to users table
+        /// </summary>
+        /// <param name="userdto">information about user</param>
+        /// <returns>UserDto with generated id</returns>
         public async Task<ActionResult<UserDTO>> PostUser(UserDTO userdto)
         {
 
@@ -50,6 +64,11 @@ namespace BookMyShow.Services
             return _mapper.Map<UserDTO>(res);
         }
 
+        /// <summary>
+        /// check user details for login
+        /// </summary>
+        /// <param name="login">info about user</param>
+        /// <returns>UserDTO</returns>
         public UserDTO CheckUser(Login login)
         {
             var a = db.SingleOrDefault<User>("SELECT * FROM Users where Email=@0 and Password=@1 and isdeleted=0", login.Email, login.Password);

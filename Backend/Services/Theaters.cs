@@ -17,6 +17,12 @@ namespace BookMyShow.Services
             _context = context;
             db = new DataBaseService.Database().getDb();
         }
+
+        /// <summary>
+        /// get all the theaters for a specific movie
+        /// </summary>
+        /// <param name="id">MovieId</param>
+        /// <returns>list of theaterDTO</returns>
         public List<TheaterDTO> GetTheaters(int id)
         {
             
@@ -28,11 +34,22 @@ namespace BookMyShow.Services
             }
             return theaters;
         }
+
+        /// <summary>
+        /// delete theater from theaters table
+        /// </summary>
+        /// <param name="id">theater id</param>
         public void DeleteTheater(int id)
         {
             db.Update<Theater>("SET isdeleted = 1  WHERE id = @0",id);
             return;
         }
+
+        /// <summary>
+        /// add theater to theaters table
+        /// </summary>
+        /// <param name="theater">Theater data</param>
+        /// <returns>TheaterDTO</returns>
         public async Task<Microsoft.AspNetCore.Mvc.ActionResult<TheaterDTO>> PostUser(Theater theater)
         {           
             _context.Theaters.Add(theater);
